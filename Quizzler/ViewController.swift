@@ -14,17 +14,19 @@ class ViewController: UIViewController {
     let allQuestions = QuestionBank()
     var pickedAnswer : Bool = false
     var count: Int = 0
+    var score: Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet var progressBar: UIView!
+
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressBar: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstQuestion = allQuestions.list[count]
-        questionLabel.text=firstQuestion.questionText
+        updateUI()
+        nextQuestion()
     }
 
 
@@ -39,7 +41,9 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-      
+        progressLabel.text = "\(count + 1) / 13"
+        scoreLabel.text = "Score: \(score)"
+        progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(score)
     }
     
 
@@ -51,7 +55,8 @@ class ViewController: UIViewController {
     func checkAnswer() {
         let firstAnswer = allQuestions.list[count].answer
         if(firstAnswer == pickedAnswer) {
-            print("right ")
+            score += 1
+            print("right \(score)")
         } else {
             print("false")
         }
@@ -65,13 +70,16 @@ class ViewController: UIViewController {
             alert.addAction(restartAction)
             present(alert, animated: true, completion: nil)
         }
+        updateUI()
         
     }
     
     
     func startOver() {
        count = 0
+        score = 0
         nextQuestion()
+        updateUI()
     }
     
 

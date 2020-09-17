@@ -41,7 +41,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHh-ve-yfT">
                                 <rect key="frame" x="0.0" y="620" width="375" height="47"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-Z7-OdN">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-Z7-OdN" userLabel="progressBar">
                                         <rect key="frame" x="0.0" y="33" width="24" height="14"/>
                                         <color key="backgroundColor" red="0.92706394195556641" green="0.72759377956390381" blue="0.064024783670902252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -153,7 +153,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="progressBar" destination="Dsa-Z7-OdN" id="Jep-Z7-uzr"/>
+                        <outlet property="progressBar" destination="Dsa-Z7-OdN" id="Zef-a3-iwE"/>
                         <outlet property="progressLabel" destination="qil-6C-XPA" id="vOI-gf-aRi"/>
                         <outlet property="questionLabel" destination="4GJ-Ce-brK" id="pIn-gm-ACF"/>
                         <outlet property="scoreLabel" destination="c0R-Fj-fUI" id="31D-zq-NpU"/>

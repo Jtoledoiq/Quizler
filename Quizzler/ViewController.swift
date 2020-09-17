@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     //Place your instance variables here
     let allQuestions = QuestionBank()
+    var pickedAnswer : Bool = false
+    var count: Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -21,12 +23,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let firstQuestion = allQuestions.list[count]
+        questionLabel.text=firstQuestion.questionText
     }
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
-  
+        if(sender.tag == 1) {
+            pickedAnswer = true
+        } else { pickedAnswer = false }
+        
+        checkAnswer()
+        nextQuestion()
     }
     
     
@@ -36,17 +44,34 @@ class ViewController: UIViewController {
     
 
     func nextQuestion() {
-        
+        questionLabel.text=allQuestions.list[count].questionText
     }
     
     
     func checkAnswer() {
+        let firstAnswer = allQuestions.list[count].answer
+        if(firstAnswer == pickedAnswer) {
+            print("right ")
+        } else {
+            print("false")
+        }
+        
+         
+        if (count<12) {
+            count += 1
+        } else {
+            let alert = UIAlertController(title: "Alert", message: "there is no more questions", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart", style: .default , handler: { (UIAlertAction) in  self.startOver() })
+            alert.addAction(restartAction)
+            present(alert, animated: true, completion: nil)
+        }
         
     }
     
     
     func startOver() {
-       
+       count = 0
+        nextQuestion()
     }
     
 

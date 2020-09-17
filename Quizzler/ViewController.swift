@@ -18,10 +18,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressBar: UIView!
+    @IBOutlet var progessBar: UIView!
     
+    @IBOutlet weak var progressLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     func updateUI() {
         progressLabel.text = "\(count + 1) / 13"
         scoreLabel.text = "Score: \(score)"
-        progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(score)
+        progessBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(count+1)
     }
     
 
